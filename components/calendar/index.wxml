@@ -1,0 +1,61 @@
+<view  wx:if="{{showTitle}}"  class="picker_data">
+  <view bind:tap="getToday" class="picker_info left">今天</view>
+    <picker class="picker_info center custom-picker" mode='date' bindchange='change' value='{{value}}'>
+      <view style="color: #36f;">{{value}}</view>
+    </picker>
+    <view bind:tap="opViewType" class="picker_info right">{{viewType == 'month'?'周':'月'}}视图</view>
+</view>
+
+<view style="display:flex;justify-content: center;font-size: 25rpx;text-align: center;color: #36f;margin-right: 20px;margin-bottom: 5px;">
+  <view style="color: #eb3333;"  bind:tap="getToday" >今天</view>
+  <view style="width: 80%;"  wx:if="{{viewType == 'week' && !showTitle}}">公历:{{value}} 农历:{{selectLunar.IMonthCn}} {{selectLunar.IDayCn}}</view>
+</view>
+
+
+
+
+<view class="content">
+  <view class='{{["calendar",hideEdge,viewType+"-view"]}}'>
+
+
+    <view class='week-label-row'>
+      <view wx:for='{{weekLabel}}' wx:key="index">
+        {{item}}
+      </view>
+    </view>
+
+
+    <swiper circular duration='300' current='{{currentIndex}}' bindchange='swiperChange' bindanimationfinish='swiperFinish' bindtransitionend='transitionEnd' bindtouchstart='startTouch' bindtouchmove='moveTouch' bindtouchend='endTouch' bindtouchcancel='cancelTouch' class='{{animate}}'>
+
+
+      <swiper-item wx:for='{{views}}' wx:key="index">
+
+        <view class='grid' style='top:{{topValues[index]}}rpx'>
+
+          <view wx:for='{{item}}' wx:for-item='dayItem' wx:for-index='dayIndex' wx:key="dayIndex" bindtap='selectDate' data-data='{{dayItem}}' class='item {{(dayItem.week == 6 || dayItem.week == 0) ?"isweek":"noWeek"}} item-{{dayItem.type}} {{ viewIndex == index && currentDate == dayItem.date ? " selected" : ""}}'>
+
+            <!-- {{ indicator[dayItem.date] ? " indicator indicator-" + themeColors[indicator[dayItem.date]] : "" }} -->
+            <view class='inner {{!dayItem.isMonth?"not_is_month":""}}'>
+              <view class="work {{dayItem.holiday.work?'work1':'work2'}}" wx:if="{{dayItem.holiday.name}}">{{dayItem.holiday.work?'班':'休'}}</view>
+              <view class='solar-day-label'>{{dayItem.day}}</view>
+              <view class='lunar-day-label {{"label_color" + dayItem.label_stytle || 0}}'>{{dayItem.label}}</view>
+            </view>
+
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+
+</view>
+
+<view class="lunarBox" wx:if="{{selectLunar && showSelectLunar}}">
+  <view class="jr">{{selectLunar.label}}</view>
+  <view>
+    <view class="lunarday"><view class="lunarday_font">{{selectLunar.IMonthCn}} {{selectLunar.IDayCn}}</view><view></view><view class="lunarday_font">{{selectLunar.gzYear}}年  {{selectLunar.Animal}}</view></view>
+    <!-- <view class="lunarday"></view> -->
+  </view>
+  <view class="yiBox"><view class="y_font">宜：</view><view class="yi">{{selectLunar.yi}}</view></view>
+  <view class="yiBox"><view class="y_font">忌：</view><view class="yi">{{selectLunar.ji}}</view></view>
+</view>

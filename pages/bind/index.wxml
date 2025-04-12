@@ -1,0 +1,66 @@
+<!--pages/bind/index.wxml-->
+<navbar nav-type="back" title="页面标题" />
+<view class="page-wrapper">
+  <image class="bg-image" src="../../image/bg.jpg" mode="aspectFill"></image>
+  <view class="container">
+    <view class="form-container">
+      <text class="page-title">{{role === 'TEACHER' ? '教师信息绑定' : '学生信息绑定'}}</text>
+      
+      <form bindsubmit="onSubmit">
+        <!-- 姓名 - 通用字段 -->
+        <view class="form-item">
+          <text class="label">姓名：</text>
+          <input class="input" name="name" placeholder="请输入姓名" value="{{formData.name}}" />
+        </view>
+
+        <!-- 性别 - 通用字段 -->
+        <view class="form-item">
+          <text class="label">性别：</text>
+          <radio-group class="radio-group" name="sex" bindchange="onGenderChange">
+            <label class="radio">
+              <radio value="1" checked="{{formData.sex === '1'}}" />男
+            </label>
+            <label class="radio">
+              <radio value="2" checked="{{formData.sex === '2'}}" />女
+            </label>
+          </radio-group>
+        </view>
+
+        <!-- 教师特有字段 -->
+        <block wx:if="{{role === 'TEACHER'}}">
+          <view class="form-item">
+            <text class="label">手机号：</text>
+            <input class="input" type="number" name="mobile" placeholder="请输入手机号" maxlength="11" value="{{formData.mobile}}" />
+          </view>
+
+          <view class="form-item">
+            <text class="label">职务：</text>
+            <input class="input" name="position" placeholder="请输入职务" value="{{formData.position}}" />
+          </view>
+
+          <view class="form-item">
+            <text class="label">专业：</text>
+            <input class="input" name="subject" placeholder="请输入专业" value="{{formData.subject}}" />
+          </view>
+
+          <view class="form-item">
+            <text class="label">班级：</text>
+            <input class="input" name="className" placeholder="请输入班级" value="{{formData.className}}" />
+          </view>
+        </block>
+
+        <!-- 学生特有字段 -->
+        <block wx:if="{{role === 'STUDENT'}}">
+          <view class="form-item">
+            <text class="label">班级：</text>
+            <input class="input" name="classId" type="number" placeholder="请输入班级ID" value="{{formData.classId}}" />
+          </view>
+        </block>
+
+        <button class="submit-button" form-type="submit">
+          确认绑定
+        </button>
+      </form>
+    </view>
+  </view>
+</view>

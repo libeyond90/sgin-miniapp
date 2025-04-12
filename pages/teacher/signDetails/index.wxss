@@ -1,0 +1,246 @@
+/* pages/teacher/signDetails/index.wxss */
+page {
+  --primary: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.12);
+  --primary-dark: #4f46e5;
+  --text: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --surface: rgba(30, 30, 35, 0.85);
+  --surface-light: rgba(255, 255, 255, 0.08);
+  --danger: #ef4444;
+  --danger-light: rgba(239, 68, 68, 0.12);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top);
+}
+
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  z-index: 1;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* 详情卡片 */
+.detail-card {
+  position: relative;
+  z-index: 2;
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin: 24rpx;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32rpx;
+}
+
+.task-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+  margin-right: 24rpx;
+}
+
+.action-btns {
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 20rpx;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  gap: 8rpx;
+}
+
+.action-btn.edit {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.action-btn.delete {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.btn-icon {
+  font-size: 28rpx;
+}
+
+.info-section {
+  background: var(--surface-light);
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+}
+
+.info-row:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-label {
+  color: var(--text-secondary);
+}
+
+.info-value {
+  color: var(--text);
+}
+
+/* 打卡记录列表 */
+.sign-list {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  margin: 0 24rpx;
+  overflow-y: auto;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 24rpx);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.header-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.sign-count {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.sign-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16rpx;
+  padding: 8rpx 0;
+}
+
+.sign-item {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  border-radius: 16rpx;
+  padding: 16rpx;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* 防止内容溢出 */
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 12rpx;
+}
+
+.user-name {
+  font-size: 28rpx;
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.user-position {
+  font-size: 22rpx;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2rpx 12rpx;
+  border-radius: 24rpx;
+  white-space: nowrap;
+}
+
+.sign-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rpx;
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.time-icon {
+  font-size: 24rpx;
+  opacity: 0.7;
+}
+
+.empty-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  padding: 64rpx 32rpx;
+  color: var(--text-secondary);
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 64rpx;
+  opacity: 0.7;
+}
+
+/* 响应式布局 */
+@media screen and (max-width: 768rpx) {
+  .sign-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 580rpx) {
+  .sign-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.noIn{
+  background-color: var(--danger);
+  color: var(--text);
+}

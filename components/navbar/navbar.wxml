@@ -1,0 +1,24 @@
+<view class="navbar {{showBorder ? 'navbar-border' : ''}}" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;">
+  <view class="navbar-content" style="height: {{menuButtonInfo.height}}px; margin-top: {{menuButtonInfo.top - statusBarHeight}}px;">
+    <!-- 返回按钮 -->
+    <block wx:if="{{navType === 'back'}}">
+      <view class="nav-button back-button" bindtap="handleBack">
+        <text class="iconfont icon-back"></text>
+      </view>
+    </block>
+    
+    <!-- 首页按钮 -->
+    <block wx:if="{{navType === 'home'}}">
+      <view class="nav-button home-button" bindtap="handleHome">
+        <text class="iconfont icon-home"></text>
+      </view>
+    </block>
+
+    <!-- 标题 -->
+    <view class="nav-title" wx:if="{{title}}">{{title}}</view>
+  </view>
+</view>
+
+<!-- 占位元素，防止内容被导航栏遮挡 -->
+<view class="navbar-placeholder" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;"></view>
+

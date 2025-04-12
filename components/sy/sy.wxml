@@ -1,0 +1,20 @@
+<view class="sy_box" wx:if="{{showSelectSy}}">
+
+  <view class="sy_mb">
+    <view class="sy_xz" data-type="0" bindtap="selectSy">
+    <image class="sy_icon {{type===0?'active':''}}" src="../../syImag/sy0.png" mode="widthFix"></image>
+    </view>
+    <view class="sy_xz" data-type="1" bindtap="selectSy">
+      <image class="sy_icon {{type===1?'active':''}}" src="../../syImag/sy1.png" mode="widthFix"></image>
+    </view>
+    <view class="sy_xz" data-type="2" bindtap="selectSy">
+      <image class="sy_icon {{type===2?'active':''}}" src="../../syImag/sy2.png" mode="widthFix"></image>
+    </view>
+  </view>
+
+  <view class="ad_box" wx:if="{{showSelectSy}}">
+    <ad unit-id="adunit-b23507e28775bbc8" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+  </view>
+
+</view>
+

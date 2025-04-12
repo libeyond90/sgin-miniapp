@@ -1,0 +1,78 @@
+// 日期格式化
+function formatDate(date, format) {
+  if (!date) return '';
+  
+  // 将时间戳转换为日期对象
+  var timestamp = getDate(date);
+  
+  var year = timestamp.getFullYear();
+  var month = padZero(timestamp.getMonth() + 1);
+  var day = padZero(timestamp.getDate());
+  var hour = padZero(timestamp.getHours());
+  var minute = padZero(timestamp.getMinutes());
+  var second = padZero(timestamp.getSeconds());
+  
+  format = format || 'yyyy-MM-dd';
+  
+  // WXS 不支持正则表达式的 /g 语法，使用字符串替换函数
+  format = format.split('yyyy').join(year);
+  format = format.split('MM').join(month);
+  format = format.split('dd').join(day);
+  format = format.split('HH').join(hour);
+  format = format.split('mm').join(minute);
+  format = format.split('ss').join(second);
+  
+  return format;
+}
+
+// 数字补零
+function padZero(n) {
+  n = n.toString();
+  return n[1] ? n : '0' + n;
+}
+
+// 获取当前时间戳
+function currentTime() {
+  return getDate().getTime();
+}
+
+// 格式化距离
+function formatDistance(meters) {
+  if (meters < 1000) {
+    return meters + 'm';
+  } else {
+    return (meters / 1000).toFixed(1) + 'km';
+  }
+}
+
+// 倒计时格式化
+function formatCountdown(milliseconds) {
+  if (milliseconds <= 0) {
+    return '已过期';
+  }
+  
+  var seconds = Math.floor(milliseconds / 1000);
+  var minutes = Math.floor(seconds / 60);
+  var hours = Math.floor(minutes / 60);
+  var days = Math.floor(hours / 24);
+  
+  hours = hours % 24;
+  minutes = minutes % 60;
+  seconds = seconds % 60;
+  
+  var result = '';
+  if (days > 0) {
+    result += days + '天';
+  }
+  
+  result += padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds);
+  return result;
+}
+
+module.exports = {
+  formatDate: formatDate,
+  formatDistance: formatDistance,
+  formatCountdown: formatCountdown,
+  padZero: padZero,
+  currentTime: currentTime
+};

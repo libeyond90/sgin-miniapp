@@ -1,0 +1,109 @@
+
+<wxs src="../../../utils/util.wxs" module="util"></wxs>
+<navbar title="签到" navType="back" />
+<view class="sign-container" wx:if="{{!loading && taskDetail}}">
+  <!-- 任务卡片 -->
+  <view class="task-card">
+    <view class="task-header">
+      <text class="task-title">{{taskDetail.qdSign.title}}</text>
+      <view class="status-badge {{signStatus.hasSigned ? 'success' : signStatus.canSign ? 'active' : 'disabled'}}">
+        {{signStatus.hasSigned ? '已签到' : signStatus.canSign ? '可签到' : '不可签到'}}
+      </view>
+    </view>
+    
+    <view class="info-group">
+      <view class="info-item">
+        <text class="info-label">打卡地点</text>
+        <text class="info-value">{{taskDetail.qdSign.address}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">打卡范围</text>
+        <text class="info-value">{{taskDetail.qdSign.distance}}米</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">发布人</text>
+        <text class="info-value">{{taskDetail.qdSign.createName}} {{taskDetail.qdSign.createPosition}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">截止时间</text>
+        <text class="info-value">{{util.formatDate(taskDetail.qdSign.deadline, 'yyyy-MM-dd HH:mm')}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 倒计时区域 -->
+  <view class="countdown-section" wx:if="{{!signStatus.hasSigned && taskDetail.qdSign.deadline > util.currentTime()}}">
+    <view class="countdown-title">距离截止还剩</view>
+    <view class="countdown-timer">
+      <block wx:if="{{countdown.days > 0}}">
+        <text class="time-item">{{countdown.days}}</text>
+        <text class="time-separator">天</text>
+      </block>
+      <text class="time-item">{{util.padZero(countdown.hours)}}</text>
+      <text class="time-separator">:</text>
+      <text class="time-item">{{util.padZero(countdown.minutes)}}</text>
+      <text class="time-separator">:</text>
+      <text class="time-item">{{util.padZero(countdown.seconds)}}</text>
+    </view>
+  </view>
+
+  <!-- 用户当前位置信息 -->
+  <view class="location-section" wx:if="{{!signStatus.hasSigned}}">
+    <view class="section-title">
+      <text class="title-icon">📍</text>
+      <text>您的位置</text>
+    </view>
+    <view class="location-info">
+      <view class="distance-info">
+        <text class="distance-value">距离打卡点: {{signStatus.distance}}米</text>
+        <view  class="distance-status {{signStatus.distance <= taskDetail.qdSign.distance ? 'in-range' : 'out-range'}}">
+          {{signStatus.distance <= taskDetail.qdSign.distance ? '在范围内' : '超出范围'}}
+        </view>
+      </view>
+      <map class="location-map" 
+           latitude="{{taskDetail.qdSign.latitude}}" 
+           longitude="{{taskDetail.qdSign.longitude}}" 
+           markers="{{mapMarkers}}"
+           circles="{{mapCircles}}"
+           scale="16"
+           show-location>
+      </map>
+    </view>
+  </view>
+  
+  <!-- 签到信息 -->
+  <view class="sign-info" wx:if="{{signStatus.hasSigned}}">
+    <view class="section-title">
+      <text class="title-icon">✅</text>
+      <text>签到信息</text>
+    </view>
+    <view class="sign-detail">
+      <view class="info-item">
+        <text class="info-label">签到时间</text>
+        <text class="info-value">{{util.formatDate(taskDetail.qdSignLog.createTime, 'yyyy-MM-dd HH:mm:ss')}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">签到人</text>
+        <text class="info-value">{{taskDetail.qdSignLog.userName}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部签到按钮 -->
+  <view class="sign-btn-section">
+    <button class="sign-btn {{signStatus.canSign ? '' : 'disabled'}}" 
+            bindtap="onSign" 
+            disabled="{{!signStatus.canSign}}">
+      {{signStatus.hasSigned ? '已签到' : signStatus.canSign ? '立即签到' : '无法签到'}}
+    </button>
+    <text class="sign-tip" wx:if="{{!signStatus.canSign && !signStatus.hasSigned}}">
+      {{signStatus.distance > taskDetail.qdSign.distance ? '您不在打卡范围内' : '已超过截止时间'}}
+    </text>
+  </view>
+</view>
+
+<!-- 加载中 -->
+<view class="loading-container" wx:if="{{loading}}">
+  <view class="loading-spinner"></view>
+  <text class="loading-text">加载中...</text>
+</view>

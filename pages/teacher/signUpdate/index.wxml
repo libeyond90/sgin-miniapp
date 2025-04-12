@@ -1,0 +1,71 @@
+<!--pages/teacher/signUpdate/index.wxml-->
+<navbar title="{{id ? '修改打卡任务' : '发布打卡任务'}}" navType="back" />
+<view class="page">
+  <view class="form-container">
+    <view class="name-section">
+      <view class="section-title">任务名称</view>
+      <input class="name-input" 
+             placeholder="请输入任务名称" 
+             placeholder-class="input-placeholder"
+             value="{{formData.name}}"
+             bindinput="onNameInput" />
+    </view>
+
+    <view class="location-section">
+      <view class="section-title">打卡位置</view>
+      <view class="location-info" bindtap="chooseLocations">
+        <view class="location-detail" wx:if="{{formData.latitude && formData.longitude}}">
+          <text class="location-icon">📍</text>
+          <view class="location-text">
+            <text>{{formData.address || '未知地点'}}</text>
+            <text class="location-coords">({{formData.latitude}}, {{formData.longitude}})</text>
+          </view>
+        </view>
+        <view class="location-placeholder" wx:else>
+          <text class="location-icon">📍</text>
+          <text>点击选择打卡位置</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="distance-section">
+      <view class="section-title">打卡范围</view>
+      <view class="distance-slider">
+        <slider min="50" max="1000" step="50" value="{{formData.distance}}" 
+                activeColor="#3B82F6" backgroundColor="rgba(255, 255, 255, 0.1)"
+                block-color="#3B82F6" block-size="28"
+                bindchange="onDistanceChange"
+                bindchanging="onDistanceChanging"
+                selected-color="#3B82F6"
+                class="slider-component" />
+        <text class="distance-value">{{formData.distance}}米</text>
+      </view>
+      <view class="distance-tips">
+        <text class="tip-text">50米</text>
+        <text class="tip-text">1000米</text>
+      </view>
+    </view>
+
+    <view class="deadline-section">
+      <view class="section-title">截止时间</view>
+      <picker mode="multiSelector" bindchange="onDeadlineChange" 
+              bindcolumnchange="onDeadlineColumnChange" 
+              value="{{dateTimeIndex}}" range="{{dateTimeArray}}">
+        <view class="deadline-picker">
+          <text class="deadline-icon">🕒</text>
+          <block wx:if="{{formData.deadline}}">
+            <text class="deadline-text">{{deadlineText}}</text>
+          </block>
+          <text wx:else class="placeholder">请选择截止时间</text>
+          <text class="arrow">></text>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="submit-section">
+    <button class="submit-btn" bindtap="onSubmit">
+      {{id ? '保存修改' : '发布任务'}}
+    </button>
+  </view>
+</view>

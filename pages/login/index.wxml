@@ -1,0 +1,4 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+    <view class="navigate flex_center" bindtap="go" data-type="1"> 水印相机 </view>
+</view>

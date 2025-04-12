@@ -1,0 +1,99 @@
+<!--pages/teacher/home/index.wxml-->
+<navbar  title="学生系统" />
+
+
+<view class="page">
+  <wxs src="../../../utils/util.wxs" module="dateFormatter"></wxs>
+  <image class="bg-image" src="../../../image/bg.jpg" mode="aspectFill"></image>
+  <!-- 顶部个人信息区域 -->
+  <view class="top-section">
+    <!-- 个人信息卡片 -->
+    <view class="info-card">
+      <view class="card-header">
+        <view class="user-info">
+          <view class="user-detail">
+            <text class="name">{{userInfo.name}}</text>
+            <text class="qd-class-id info-value">班级id:{{currentClass.id}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="card-body">
+        <view class="info-item">
+          <view class="info-icon">📚</view>
+          <view class="info-content">
+            <text class="info-value">{{currentClass.subject}}</text>
+          </view>
+        </view>
+        <view class="info-item">
+          <view class="info-icon">👥</view>
+          <view class="info-content">
+            <text class="info-value">{{currentClass.name}}</text>
+          </view>
+        </view>
+        <!-- 添加班级人数统计 -->
+        <view class="info-item">
+          <view class="info-icon">👨‍🏫</view>
+          <view class="info-content">
+            <text class="info-label">班级人数</text>
+            <view class="count-box">
+              <text class="count-item">老师 {{classCounts.tcount || 0}}</text>
+              <text class="count-item">学生 {{classCounts.scount || 0}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <button class="publish-btn" bindtap="onCreateSignTask">
+      <text class="btn-icon">✏️</text>
+      <text>发布打卡任务</text>
+    </button> -->
+  </view>
+
+  <!-- 状态筛选区域 -->
+  <view class="filter-section">
+    <view class="filter-tabs">
+      <view class="filter-tab {{signIn === 2 ? 'active' : ''}}" 
+            bindtap="onStatusChange" 
+            data-type="2">
+        未打卡
+      </view>
+      <view class="filter-tab {{signIn === 0 ? 'active' : ''}}" 
+            bindtap="onStatusChange" 
+            data-type="">
+        全部
+      </view>
+      <view class="filter-tab {{signIn === 1 ? 'active' : ''}}" 
+            bindtap="onStatusChange" 
+            data-type="1">
+        已打卡
+      </view>
+    </view>
+  </view>
+
+  <!-- 任务列表区域 -->
+  <view class="task-list">
+    <block wx:if="{{taskList.length > 0}}">
+      <view class="task-item" wx:for="{{taskList}}" wx:key="id" bindtap="onTaskTap" data-task="{{item}}">
+        <view class="task-header">
+          <text class="task-name">{{item.title}}</text>
+          <text class="distance-tag">{{item.distance}}m</text>
+        </view>
+        
+        <view class="location-row">
+          <text class="location-icon">📍</text>
+          <text class="location-text">{{item.address}}</text>
+        </view>
+
+        <view class="task-footer">
+          <text class="creator-name">{{item.createName}} {{item.createPosition}}</text>
+          <text class="deadline-time">{{dateFormatter.formatDate(item.deadline,'yyyy-MM-dd HH:mm')}}</text>
+        </view>
+      </view>
+      <view class="list-bottom-text">没有更多啦~</view>
+    </block>
+    <view class="empty-tip" wx:else>
+      <text class="empty-icon">📝</text>
+      <text>暂无{{currentStatus === 'ongoing' ? '进行中的' : currentStatus === 'ended' ? '已结束的' : ''}}任务~</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+node_modules
+miniprogram_npm
+.idea
+.vite
+yarn.lock
+package-lock.json

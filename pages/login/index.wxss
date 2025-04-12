@@ -1,0 +1,10 @@
+.page {
+    padding: 20rpx;
+  }
+  .navigate {
+    height: 64rpx;
+    margin-bottom: 20rpx;
+    background-color: rgba(159, 190, 244, 0.7);
+    border-radius: 10rpx;
+  }
+  

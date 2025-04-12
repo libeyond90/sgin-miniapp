@@ -1,0 +1,25 @@
+<view style="width: 100%; " class="drag-container"><view
+    wx:for="{{dragImgList}}"
+    wx:key="id"
+    style="transform: translate({{index === currentIndex ? tranX : item.tranX}}px, {{index === currentIndex ? tranY : item.tranY}}px); z-index: {{index === currentIndex ? 10 : 1}}; width: {{previewSize}}px; height: {{previewSize}}px;"
+    class="drag-item drag-item-transition"
+    mark:index="{{index}}"
+    mark:key="{{item.key}}"
+    catch:longpress="longPress"
+    catch:touchmove="touchMove"
+    catch:touchend="touchEnd"
+  ><image catch:tap="preImage" data-src="{{host + item.src}}" class="drag-item-img" src="{{host + item.src}}"/><view catch:tap="deleteImg" mark:key="{{item.key}}" class="drag-item-delete"><view class="drag-item-delete_default" style="{{deleteStyle}}">x</view></view></view><view
+    bindtap="uploadImgTost"
+    class="drag-item drag-upload"
+    hidden="{{dragImgList.length >= maxCount}}"
+    style="transform: translate({{uploadPosition.tranX}}px, {{uploadPosition.tranY}}px); width: {{previewSize}}px; height: {{previewSize}}px;"
+  ><view class="drag-upload_solt"><slot name="upload"></slot></view><view class="drag-upload_default"><text>+</text></view></view></view>
+
+  <!-- <view class="select-items" wx:if="{{isShow}}">
+    <view class="tss">* 请不要上传违反国家法律规定文件，如有发现会自动举报，去掉小程序使用权限</view>
+    <view class="item" data-type="camera" bind:tap="uploadImage">拍摄照片</view>
+    <view class="item" data-type="album" bind:tap="uploadImage">从相册选取</view>
+    <view class="item" data-type="msg" bind:tap="uploadImage">从微信聊天中选取</view>
+    <view class="item cancel-btn" bind:tap="uploadImgTost">取消</view>
+</view> -->
+<uploads isShow="{{isShow}}" counts="{{counts}}" mediaType="image" bind:updateImageList="imagesCallBack" bind:updateShowStatus="updateShowStatus"></uploads>

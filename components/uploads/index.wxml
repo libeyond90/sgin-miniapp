@@ -1,0 +1,10 @@
+<view class="select-items" wx:if="{{isShow}}">
+  <view class="tss">* 请不要上传违反国家法律规定文件，如有发现会自动举报，去掉小程序使用权限</view>
+  <view class="item" wx:if="{{mediaType != 'file' && tools.contains(opTypes,'camera') }}" data-type="camera" bind:tap="media">拍摄照片</view>
+  <view class="item" wx:if="{{mediaType != 'file' && tools.contains(opTypes,'album') }}" data-type="album" bind:tap="media">从相册选取</view>
+  <view class="item" wx:if="{{tools.contains(opTypes,'msg') }}" data-type="msg" bind:tap="msgFile">从微信聊天中选取</view>
+
+  <view class="item cancel-btn" bind:tap="uploadImgTost">取消</view>
+</view>
+
+<wxs module="tools" src ="../uploads/tools.wxs"/>

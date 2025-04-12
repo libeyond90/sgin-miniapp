@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@miniprogram-component-plus/select-text": "^1.0.1",
+    "miniprogram-computed": "^4.4.0"
+  }
+}

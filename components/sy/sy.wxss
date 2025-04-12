@@ -1,0 +1,45 @@
+.sy_icon {
+  width: 269rpx;
+  /* max-width: 90%; */
+  /* place-items: center; */
+  margin: 20rpx;
+}
+
+.active{
+  border: 4rpx solid red;
+}
+
+.sy_box{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  height: auto;
+  z-index: 99;
+  width: 300px;
+  /* transform: scale(1); */
+  height: 208px;
+}
+
+.sy_mb{
+  display: flex;
+  height: 80%;
+  /* width: 100%; */
+  flex-wrap: wrap;
+}
+
+.sy_xz{
+    /* align-items: center; */
+    /* justify-items: center; */
+    /* width: 50% !important; */
+    background: rgba(255,255,255,0.1);
+    width: 50%;
+    display: flex;
+}
+
+.ad_box{
+  width: 100% !important;
+  background: white;
+  width: 300px ;
+  height: 104px ;
+}

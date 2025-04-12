@@ -1,0 +1,250 @@
+.page-wrapper {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.container {
+  height: 100vh;
+  padding: 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+/**  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.75) 100%
+  );**/
+}
+
+.welcome-section {
+  margin-top: 60rpx;
+  text-align: center;
+  animation: fadeInDown 0.8s ease;
+}
+
+.welcome-title {
+  font-size: 52rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 20rpx;
+  display: block;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.welcome-subtitle {
+  font-size: 32rpx;
+  color: #333;
+  display: block;
+  margin-top: 10rpx;
+}
+
+.role-container {
+  margin-top: 80rpx;
+  padding: 0 20rpx;
+  animation: fadeInUp 0.8s ease;
+}
+
+.role-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(to right, #e74c3c, #c0392b);
+}
+
+.role-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 15rpx rgba(0, 0, 0, 0.08);
+}
+
+.role-icon {
+  font-size: 60rpx;
+  margin-right: 30rpx;
+}
+
+.role-info {
+  flex: 1;
+}
+
+.role-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.role-desc {
+  font-size: 26rpx;
+  color: #666;
+  display: block;
+}
+
+.role-arrow {
+  font-size: 40rpx;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.footer-tip {
+  text-align: center;
+  margin-bottom: 40rpx;
+  color: #666;
+  font-size: 26rpx;
+  text-shadow: 0 1rpx 2rpx rgba(255, 255, 255, 0.8);
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 50rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.form-item {
+  margin-bottom: 35rpx;
+  position: relative;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+  display: block;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  height: 88rpx;
+  background: #f8f9fa;
+  border: 2rpx solid #e9ecef;
+  border-radius: 12rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #4CAF50;
+  background: #fff;
+  box-shadow: 0 0 0 2rpx rgba(76, 175, 80, 0.2);
+}
+
+.radio-group {
+  display: flex;
+  gap: 40rpx;
+  padding: 20rpx 0;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.radio radio {
+  margin-right: 10rpx;
+  transform: scale(0.9);
+}
+
+.submit-button {
+  margin-top: 50rpx;
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 44rpx;
+  box-shadow: 0 4rpx 10rpx rgba(76, 175, 80, 0.3);
+  transition: all 0.3s ease;
+}
+
+.submit-button:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 6rpx rgba(76, 175, 80, 0.2);
+}
+
+/* 添加输入框动画效果 */
+.form-item .input {
+  transform-origin: left;
+  transition: all 0.3s ease;
+}
+
+.form-item .input:focus {
+  transform: scale(1.02);
+}
+
+/* 错误提示样式 */
+.error-tip {
+  color: #ff4d4f;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  margin-left: 20rpx;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

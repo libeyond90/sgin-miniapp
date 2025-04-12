@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/register/index",
+    "pages/bind/index",
+    "pages/teacher/home/index",
+    "pages/teacher/signUpdate/index",
+    "pages/teacher/signDetails/index",
+    "pages/student/home/index",
+    "pages/student/signDetails/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "签到系统",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于设置打卡地点"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,77 @@
+<!--pages/teacher/signDetails/index.wxml-->
+<navbar title="任务详情" navType="back" />
+
+
+<view class="page">
+  <wxs src="../../../utils/util.wxs" module="dateFormatter"></wxs>
+  <image class="bg-image" src="../../../image/bg.jpg" mode="aspectFill"></image>
+  
+  <!-- 任务详情卡片 -->
+  <view class="detail-card">
+    <view class="card-header">
+      <text class="task-title">{{taskDetail.title}}</text>
+      <view class="action-btns">
+        <view class="action-btn edit" bindtap="onEditTask">
+          <text class="btn-icon">✏️</text>
+          <text>编辑</text>
+        </view>
+        <view class="action-btn delete" bindtap="onDelete">
+          <text class="btn-icon">🗑️</text>
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="info-section">
+      <view class="info-row">
+        <text class="info-label">打卡地点</text>
+        <text class="info-value">{{taskDetail.address}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">发布者</text>
+        <text class="info-value">{{taskDetail.createName}} {{taskDetail.createPosition}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">创建时间</text>
+        <text class="info-value">{{dateFormatter.formatDate(taskDetail.createTime,'yyyy-MM-dd HH:mm')}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">截止时间</text>
+        <text class="info-value">{{dateFormatter.formatDate(taskDetail.deadline,'yyyy-MM-dd HH:mm')}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">学生数</text>
+        <text class="info-value">{{scount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡记录列表 -->
+  <view class="sign-list">
+    <view class="list-header">
+      <text class="header-title">打卡记录</text>
+      <text class="sign-count">共 {{signList.length}} 条记录</text>
+    </view>
+
+    <block wx:if="{{signList.length > 0}}">
+      <view class="sign-grid">
+        <view class="sign-item" wx:for="{{signList}}" wx:key="id">
+          <view class="user-info ">
+            <text class="user-name">{{item.name}}</text>
+            <text class="user-position {{item.signIn==='未打卡'?'noIn':''}}">{{item.signIn}}</text>
+          </view>
+          <view wx-if="{{item.createTime}}" class="sign-info">
+            <view class="sign-time">
+              <text class="time-icon">🕒</text>
+              <text>{{item.createTime}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="empty-tip" wx:else>
+      <text class="empty-icon">📝</text>
+      <text>暂无打卡记录</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,1 @@
+<canvas type="2d" id="{{canvasId}}" style="position: fixed; top: -10000px; left: -10000px; width: {{canvasWidth}}px;height: {{canvasHeight}}px;"></canvas>

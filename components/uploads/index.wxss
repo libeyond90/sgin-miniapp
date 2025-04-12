@@ -1,0 +1,32 @@
+.select-items {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #1D1D1D;
+}
+
+
+.select-items .item {
+  width: 100%;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: #2C2C2C;
+  color: #fff;
+  margin-bottom: 2rpx;
+}
+
+
+.select-items .cancel-btn {
+  margin-top: 30rpx;
+}
+
+.tss{
+  text-align: center;
+  background-color: #2C2C2C;
+  font-size: 20rpx;
+  height: 14px;
+  color: indianred;
+  padding-top: 8px;
+}

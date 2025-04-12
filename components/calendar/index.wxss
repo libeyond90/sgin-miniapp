@@ -1,0 +1,343 @@
+/* components/calendar/index.wxss */
+
+.calendar {
+  background: white;
+  position: relative;
+  /* box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  width: 100%; */
+}
+
+swiper {
+  height: 600rpx;
+  position: relative;
+}
+
+.hide-edge swiper:before, .hide-edge swiper:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 10rpx;
+  width: 100%;
+  background: #fcfcfc;
+  z-index: 10;
+}
+
+.hide-edge swiper:after {
+  top: auto;
+  bottom: 0;
+}
+
+swiper.animate, swiper.animate .grid {
+  transition: all 0.3s;
+}
+
+.week-view swiper {
+  height: 120rpx;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+  padding: 17rpx 0;
+  height: 600rpx;
+}
+
+.item, .week-label-row view {
+  max-width: 14.286%;
+  flex: 0 0 14.286%;
+  text-align: center;
+  box-sizing: border-box;
+  color: #9f9f9f;
+}
+
+.not_is_month{
+  opacity: .3;
+}
+
+.inner {
+  width: 86rpx;
+  height: 86rpx;
+  border-radius: 50rpx;
+  display: inline-block;
+  padding: 15rpx 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.inner.indicator:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-left: -5rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 5rpx;
+  background: #c7c7c7;
+}
+
+/* 指示灯颜色 */
+
+.inner.indicator-secondary:before {
+  background: #c7c7c7;
+}
+
+.inner.indicator-primary:before {
+  background: #0099d3;
+}
+
+.inner.indicator-warn:before {
+  background: #ff752a;
+}
+
+/*  */
+
+.week-view .inner, .item-current .inner {
+
+}
+
+
+
+.solar-day-label {
+  /* height: 34rpx;
+  font-size: 34rpx;
+  line-height: 34rpx; */
+  height: 39rpx;
+  font-size: 40rpx;
+  line-height: 34rpx;
+  /* font-family: fantasy; */
+  font-family: fangsong;
+  font-weight: 900;
+}
+
+
+.lunar-day-label {
+  height: 26rpx;
+  font-size: 24rpx;
+  line-height: 26rpx;
+  color: #828282;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: fantasy;
+}
+
+/* 激活样式 */
+
+
+
+.week-view .selected .inner, .item-current.selected .inner {
+   /* background: #0099d3;  */
+   /* background: #9FBEF4; */
+   background: #eb3333;
+   color: #fcfcfc;
+}
+
+.isweek {
+  color: #eb3333 !important;
+}
+
+.noWeek {
+  color: #201452;
+}
+
+/* .selected{
+  background: #9FBEF4;
+  color: #fcfcfc;
+} */
+
+
+.week-view .selected .lunar-day-label, .item-current.selected .lunar-day-label {
+  color: #fcfcfc;
+}
+
+.selected .inner.indicator:before {
+  display: none;
+}
+
+/* 星期标题行 */
+
+.week-label-row {
+  /* display: flex;
+  height: 40rpx;
+  line-height: 40rpx; */
+  display: flex;
+  height: 58rpx;
+  line-height: 60rpx;
+  /* margin-top: 10px;*/
+}
+
+.week-label-row view {
+  font-size: 30rpx;
+  color: #222;
+  font-weight: 600;
+}
+
+/* 文字显示颜色 */
+.label_color0{
+  /* color: #828282 */
+  color: rgba(30, 31, 36, .5);
+}
+
+.label_color3{
+  color:chartreuse;
+}
+
+.label_color1{
+  color: red;
+}
+
+.label_color2{
+  color: #00c8c8;
+}
+
+picker{
+  /* border: 1px solid #ccc;
+  /* margin: 10px; 
+  text-align: center;
+  padding: 10px 0; */
+}
+
+.picker_info{
+  width: 30%;  /*或者根据需要调整 */
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #ccc; */
+  font-size: 16px;
+}
+
+.left {
+  justify-content: flex-start;
+  margin: 19px;
+  font-size: 13px;
+}
+
+.center {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
+  margin: 19px;
+  font-size: 13px;
+}
+
+.github-link{
+  font-size: 14px;
+  color: #08f;
+  padding: 10px;
+}
+
+.picker_data{
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 55px;  /*可以根据需要调整 */
+  /* border: 1px solid #ccc; */
+  box-shadow: 0 0 0rpx cornflowerblue;
+}
+
+.custom-picker {
+  border: none;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+
+.work{
+  position: absolute;
+  top: -3px;
+  right: -3rpx;
+  color: white;
+  font-size: 20rpx;
+  padding: 0 2rpx 0 2rpx;
+  border-radius: 0.18rem;
+  font-family: fantasy;
+}
+
+.work1{
+  /* color:#4e587; */
+  background-color: #4e5877;
+}
+
+.work2{
+  /* color: red; */
+  background: #eb3333;
+}
+
+.lunarBox{
+  /* width: 88%; */
+  margin: 28rpx;
+  padding: 20rpx;
+  /* display: flex; */
+  color: #201452;
+  background: rgba(245, 246, 249, .5)
+}
+
+
+
+.jr{
+  font-size: 22px;
+  /* display: inline-block;
+  cursor: pointer; */
+  /* color: #2440b3; */
+  color: #00c8c8;
+  margin: 28rpx;
+}
+
+.lunarday{
+  display: flex;
+  font-family: fantasy;
+  font-weight: bold;
+  white-space: nowrap;
+  margin: 28rpx;
+}
+
+.lunarday_font{
+  /* display: flex; */
+  /* margin: 28rpx; */
+  font-size: 32rpx;
+  padding-right: 20px;
+}
+
+.yiBox{
+  display: flex;
+  margin: 28rpx;
+  /*flex-wrap: wrap;  使子元素自动换行 */
+}
+
+.yi{
+  /* width: 80px; 可以根据需要调整 */
+  /*height: 80px;  可以根据需要调整 */
+  /* margin: 5px; */
+  /*background-color: #f0f0f0;  背景颜色可以根据需要调整 */
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+  position: relative;
+  width: 100%;
+  font-family: "al_dd_font";
+  font-size: 26rpx;
+}
+
+.y_font{
+  color: #36f;
+  border-color: rgba(51, 102, 255, .4);
+  padding: 0 .015rem;
+  /* font-size: .11rem; */
+  /* line-height: .14rem;*/
+  /* border: 1px solid; 
+  border-radius: .04rem; */
+  font-family: "al_dd_font";
+  font-size: 26rpx;
+}

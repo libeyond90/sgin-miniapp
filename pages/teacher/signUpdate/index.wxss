@@ -1,0 +1,218 @@
+/* pages/teacher/signUpdate/index.wxss */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1c20, #2d3748);
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+/* 位置选择 */
+.location-section {
+  margin-bottom: 48rpx;
+}
+
+.location-info {
+  background: rgba(59, 130, 246, 0.1);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.location-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.location-detail, .location-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+/* 距离选择 */
+.distance-section {
+  margin-bottom: 48rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.distance-slider {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 0 12rpx;
+  position: relative;
+  height: 80rpx;
+}
+
+/* slider样式优化 */
+.slider-component {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* 重写slider默认样式 */
+.wx-slider-handle {
+  width: 28rpx !important;
+  height: 28rpx !important;
+  border-radius: 50% !important;
+}
+
+.distance-value {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  min-width: 100rpx;
+  text-align: right;
+}
+
+.distance-tips {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24rpx;
+  margin-top: 8rpx;
+}
+
+.tip-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 24rpx;
+}
+
+/* 删除旧的 switch 样式 */
+.distance-options,
+.distance-switch,
+.switch-text,
+.switch-desc {
+  display: none;
+}
+
+/* 截止时间选择 */
+.deadline-section {
+  margin-bottom: 48rpx;
+}
+
+.deadline-picker {
+  background: rgba(59, 130, 246, 0.1);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.deadline-picker:active {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.deadline-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+  color: var(--primary);
+}
+
+.deadline-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.deadline-hint {
+  font-size: 24rpx;
+  color: var(--primary);
+  margin-left: 12rpx;
+  background: var(--primary-light);
+  padding: 4rpx 12rpx;
+  border-radius: 24rpx;
+}
+
+.arrow {
+  margin-left: 12rpx;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24rpx;
+  transition: transform 0.3s ease;
+}
+
+.deadline-picker:active .arrow {
+  transform: translateX(4rpx);
+}
+
+.placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* 提交按钮 */
+.submit-section {
+  padding: 32rpx 0;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.submit-btn:active {
+  transform: translateY(2rpx);
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+/* 任务名称输入 */
+.name-section {
+  margin-bottom: 48rpx;
+}
+
+.name-input {
+  background: rgba(59, 130, 246, 0.1);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 28rpx;
+}
+
+.input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* 位置信息更新 */
+.location-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.location-coords {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
