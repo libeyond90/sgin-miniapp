@@ -13,6 +13,14 @@
 ![6624dfa3119505c54d3dc464ee8279f](https://github.com/user-attachments/assets/3f3e3325-0747-4369-8c2e-1a667a1c26af)
 ![36a4beff10c3dc668362209238b1c5a](https://github.com/user-attachments/assets/efb5cc8e-8de1-484f-8732-8824c3e08f29)
 
+https://github.com/user-attachments/assets/94467dd6-b6ea-4eeb-99ba-008aa0a0a234
+
+<div style="display: flex; flex-wrap: wrap;">
+  <img src="https://github.com/user-attachments/assets/94467dd6-b6ea-4eeb-99ba-008aa0a0a234" alt="Image 1" style="width: 33%; height: auto; margin: 5px;">
+  <img src="https://github.com/user-attachments/assets/e23ec993-9d4c-422e-8e0a-724369fbfea1" alt="Image 2" style="width: 33%; height: auto; margin: 5px;">
+  <img src="https://github.com/user-attachments/assets/35ff156e-d308-4e6d-896e-70936c46387a" alt="Image 3" style="width: 33%; height: auto; margin: 5px;">
+</div>
+
 角色分为 老师与学生
 模块分为老师注册-默认会注册带上班一个班级（可拓展-老师加入班级）
 学生注册的时候需要输入对应班级
